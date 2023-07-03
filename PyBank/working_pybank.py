@@ -40,7 +40,7 @@ greatestDecreaseDate = ""
 budget_data = os.path.join("Resources", "budget_data.csv")
 with open(budget_data) as csv_file:
     reader = csv.reader(csv_file)
-    headers = next(budget_data, None)
+    headers = next(reader)
     
 #for loop to perform the calculations needed for final figures
     for row in reader:
@@ -51,4 +51,22 @@ with open(budget_data) as csv_file:
         #set up loop to get averages and greatest profit and loss
         currentProfLoss = float(row[1]) - lastProfLoss
         if rowCount > 1:
-            
+            totalAverage += currentProfLoss
+        #update figures
+        lastProfLoss = float(row[1])
+        #get the greatest gain values
+        if currentProfLoss > greatestGain:
+            greatestGain = currentProfLoss
+            greatestGainDate = row[0]
+        #get the greatest decrease values
+        elif currentProfLoss > greatestDecrease:
+            greatestDecrease = currentProfLoss
+            greatestDecreaseDate = row[0]
+
+
+#Print all the data gathered into the format provided to follow
+
+print ("Financial Analysis \n----------------------------")
+print (f"Total Months: {rowCount}"),
+print (f"Total: ${netTotal:.0f}"),
+print (f"Average Change: ${(netTotal / (rowCount - 1)):.2f}")

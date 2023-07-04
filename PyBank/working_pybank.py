@@ -70,6 +70,19 @@ print("Financial Analysis \n----------------------------")
 print(f"Total Months: {rowCount}"),
 print(f"Total: ${netTotal:.0f}"),
 print(f"Average Change: ${(totalAverage / (rowCount - 1)):.2f}"),
-print(f"Greatest Increase in Profits: {greatestGainDate} (${greatestGain:.0f})"),
-print(f"Greatest Decrease in Profits: {greatestDecreaseDate} (${greatestDecrease:.0f})")
+print(
+    f"Greatest Increase in Profits: {greatestGainDate} (${greatestGain:.0f})"),
+print(
+    f"Greatest Decrease in Profits: {greatestDecreaseDate} (${greatestDecrease:.0f})")
 
+# Make and write into the analysis text file
+
+with open('analysis.txt', 'w') as f:
+    print("Financial Analysis \n----------------------------", file=f)
+    print(f"Total Months: {rowCount}", file=f)
+    print(f"Total: ${netTotal:.0f}", file=f)
+    print(f"Average Change: ${(totalAverage / (rowCount - 1)):.2f}", file=f)
+    print(
+        f"Greatest Increase in Profits: {greatestGainDate} (${greatestGain:.0f})", file=f)
+    print(
+        f"Greatest Decrease in Profits: {greatestDecreaseDate} (${greatestDecrease:.0f})", file=f)

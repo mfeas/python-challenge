@@ -1,20 +1,20 @@
-#In this Challenge, you are tasked with helping a small, rural 
-#town modernize its vote-counting process.
+# In this Challenge, you are tasked with helping a small, rural
+# town modernize its vote-counting process.
 
-#You will be given a set of poll data called election_data.csv. 
-#The dataset is composed of three columns: "Voter ID", "County", 
-#and "Candidate". Your task is to create a Python script that 
-#analyzes the votes and calculates each of the following values:
+# You will be given a set of poll data called election_data.csv.
+# The dataset is composed of three columns: "Voter ID", "County",
+# and "Candidate". Your task is to create a Python script that
+# analyzes the votes and calculates each of the following values:
 
-#The total number of votes cast
+# The total number of votes cast
 
-#A complete list of candidates who received votes
+# A complete list of candidates who received votes
 
-#The percentage of votes each candidate won
+# The percentage of votes each candidate won
 
-#The total number of votes each candidate won
+# The total number of votes each candidate won
 
-#The winner of the election based on popular vote
+# The winner of the election based on popular vote
 
 import os
 import csv
@@ -52,16 +52,39 @@ with open(election_data) as csv_file:
 # get the percentages of all the canidates votes
 
 stockhamPercentage = stockhamVotes / totalVotes
-degettePercentage = degetteVotes / totalVotes   
+degettePercentage = degetteVotes / totalVotes
 doanePercentage = doaneVotes / totalVotes
 
 
 # use all the data gathered from the python script to find the popular vote
 
 if stockhamVotes > degetteVotes and stockhamVotes > doaneVotes:
-    popularVote  = stockham
+    popularVote = stockham
 elif degetteVotes > stockhamVotes and degetteVotes > doaneVotes:
     popularVote = degette
 else:
     popularVote = doane
 
+
+# Print all the data gathered into the format provided to follow
+
+print("Election Results \n-------------------------"),
+print(f"Total Votes: {totalVotes} \n-------------------------"),
+print(f"Charles Casper Stockham: {stockhamPercentage:.3%} ({stockhamVotes})"),
+print(f"Diana DeGette: {degettePercentage:.3%} ({degetteVotes})"),
+print(
+    f"Raymon Anthony Doane: {doanePercentage: .3%} ({doaneVotes}) \n-------------------------"),
+print(f"Winner: {popularVote}\n-------------------------")
+
+# Make and write into the analysis text file
+
+with open('analysis.txt', 'w') as f:
+
+    f.write("Election Results \n-------------------------\n"),
+    f.write(f"Total Votes: {totalVotes} \n-------------------------\n"),
+    f.write(
+        f"Charles Casper Stockham: {stockhamPercentage:.3%} ({stockhamVotes})\n"),
+    f.write(f"Diana DeGette: {degettePercentage:.3%} ({degetteVotes})\n"),
+    f.write(
+        f"Raymon Anthony Doane: {doanePercentage: .3%} ({doaneVotes}) \n-------------------------\n"),
+    f.write(f"Winner: {popularVote}\n-------------------------")

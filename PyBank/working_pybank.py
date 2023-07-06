@@ -66,7 +66,7 @@ with open(budget_data) as csv_file:
 
 # Print all the data gathered into the format provided to follow
 
-print("Financial Analysis \n----------------------------")
+print("Financial Analysis \n-------------------------")
 print(f"Total Months: {rowCount}"),
 print(f"Total: ${netTotal:.0f}"),
 print(f"Average Change: ${(totalAverage / (rowCount - 1)):.2f}"),
